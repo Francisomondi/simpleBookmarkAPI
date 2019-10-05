@@ -23,6 +23,20 @@ myForm.addEventListener( 'submit', (e) =>{
          localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
      }
+     else{
+         //get bookmarks from local storage
+        const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+
+        //add the bookmark to local storage
+        bookmarks.push(bookmark);
+        localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+       
+
+
+
+
+     }
     
     console.log(bookmark);
 }
