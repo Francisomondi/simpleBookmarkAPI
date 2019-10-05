@@ -14,6 +14,16 @@ myForm.addEventListener( 'submit', (e) =>{
          name:  siteName,
          url: siteUrl
      }
+     if(localStorage.getItem('bookmarks')== null){
+         
+        //initialize array
+         const bookmarks = [];
+         bookmarks.push(bookmark);
+         
+         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+     }
+    
     console.log(bookmark);
 }
 );
