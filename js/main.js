@@ -32,13 +32,27 @@ myForm.addEventListener( 'submit', (e) =>{
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
      }
+     fetchbookmarks();
         
 }
 
 );
 
-function deleteBookmarks(url){
-    console.log(url);
+function deleteBookmark(url){
+
+    //get bokmarks from local storage
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')); 
+
+    //loop through bookmarks
+
+    for(let i =0; i<bookmarks.length; i++){
+        if(bookmarks[i].url==url){
+            bookmarks.splice(i, 1);
+        }
+
+    }
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    fetchbookmarks();
 }
 //fetching bokmarks
 function fetchbookmarks(){
@@ -53,9 +67,9 @@ function fetchbookmarks(){
          let url = bookmarks[i].url;
 
          bookmarkresults.innerHTML += '<div class="well">' + 
-                                        '<h3>' +name +
-                                        '<a class= "btn btn-info" target= "_blank" href = "'+ url+'">visit</a>' +
-                                        '<a onclick="deleteBookmarks(\''+url+'\')" class= "btn btn-danger" href = "#">Delete</a>' +
+                                        '<h3>' + name +
+                                        '<a class= "btn btn-info" target= "_blank" href = "'+ url+ '">visit</a>' +
+                                        '<a onclick="deleteBookmark(\''+url+'\')" class= "btn btn-danger" href = "#">Delete</a>' +
                                          '</h3>' + 
                                          '</div>'
 
