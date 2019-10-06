@@ -9,6 +9,11 @@ myForm.addEventListener( 'submit', (e) =>{
     const siteName = document.getElementById('siteName').value;
     const siteUrl = document.getElementById('siteName').value;
 
+     if(!validateForm(siteName, siteUrl)){
+           return false;
+     }
+   
+
      e.preventDefault();
      bookmark = {
          name:  siteName,
@@ -74,4 +79,22 @@ function fetchbookmarks(){
                                          '</div>'
 
      }
+  }
+
+  function validateForm(siteName, siteUrl){
+    if(!siteName || !siteUrl){
+        alert('please fill in the blank space');
+        return false;
+    }
+    
+    var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+
+    var regex = new RegExp(expression);
+
+    if (!siteUrl.match(regex)) {
+        alert("please use a valid Url");
+        return false; 
+      }
+      return true;
+
   }
