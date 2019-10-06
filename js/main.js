@@ -36,6 +36,10 @@ myForm.addEventListener( 'submit', (e) =>{
 }
 
 );
+
+function deleteBookmarks(url){
+    console.log(url);
+}
 //fetching bokmarks
 function fetchbookmarks(){
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks')); 
@@ -51,7 +55,7 @@ function fetchbookmarks(){
          bookmarkresults.innerHTML += '<div class="well">' + 
                                         '<h3>' +name +
                                         '<a class= "btn btn-info" target= "_blank" href = "'+ url+'">visit</a>' +
-                                        '<a onclick=c"deleteBookmarks(\''+url+'\')" class= "btn btn-danger" target= "_blank" href = "#">Delete</a>' +
+                                        '<a onclick="deleteBookmarks(\''+url+'\')" class= "btn btn-danger" href = "#">Delete</a>' +
                                          '</h3>' + 
                                          '</div>'
 
