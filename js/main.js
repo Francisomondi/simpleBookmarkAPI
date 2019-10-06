@@ -32,16 +32,11 @@ myForm.addEventListener( 'submit', (e) =>{
         localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
      }
-     
-      
-   
-    
+        
 }
-//fetching bokmarks
-
-
 
 );
+//fetching bokmarks
 function fetchbookmarks(){
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks')); 
     //get output results
@@ -55,6 +50,8 @@ function fetchbookmarks(){
 
          bookmarkresults.innerHTML += '<div class="well">' + 
                                         '<h3>' +name +
+                                        '<a class= "btn btn-info" target= "_blank" href = "'+ url+'">visit</a>' +
+                                        '<a onclick=c"deleteBookmarks(\''+url+'\')" class= "btn btn-danger" target= "_blank" href = "#">Delete</a>' +
                                          '</h3>' + 
                                          '</div>'
 
